@@ -1,0 +1,51 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isGrowleoUser() {
+      return isAuthenticated() && 
+        request.auth.token.email.matches('.*@growleo\\.com$');
+    }
+
+    // Calendar tokens rules
+    match /calendar_tokens/{tokenId} {
+      allow read: if isAuthenticated() && 
+        request.auth.token.email == resource.data.userEmail;
+      allow create: if isAuthenticated() && 
+        request.auth.token.email == request.resource.data.userEmail;
+      allow update: if isAuthenticated() && 
+        request.auth.token.email == resource.data.userEmail;
+      allow delete: if isAuthenticated() && 
+        request.auth.token.email == resource.data.userEmail;
+    }
+
+    // Calendar events rules
+    match /calendar_events/{eventId} {
+      allow read: if isAuthenticated();
+      allow create, update, delete: if isGrowleoUser();
+    }
+
+    // Appointments rules
+    match /appointments/{appointmentId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if isGrowleoUser();
+    }
+
+    // Calendar settings rules
+    match /calendar_settings/{settingId} {
+      allow read: if isAuthenticated();
+      allow write: if isGrowleoUser();
+    }
+
+    // Default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+} 

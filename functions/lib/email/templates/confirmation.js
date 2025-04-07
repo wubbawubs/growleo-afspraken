@@ -1,0 +1,43 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.generateConfirmationEmail = generateConfirmationEmail;
+const styles_1 = require("./styles");
+function generateConfirmationEmail(appointment) {
+    const { date, description, attendees, title } = appointment;
+    const [client] = attendees;
+    return `
+    <div style="${styles_1.emailStyles.container}">
+      <div style="${styles_1.emailStyles.header}">
+        <img src="https://growleo.nl/logo.png" alt="Growleo" style="${styles_1.emailStyles.logo}" />
+        <h1>Afspraak Bevestiging</h1>
+      </div>
+      
+      <div style="${styles_1.emailStyles.content}">
+        <p>Beste ${client.name},</p>
+        
+        <p>Je afspraak is succesvol ingepland. Hier zijn de details:</p>
+        
+        <div style="${styles_1.emailStyles.appointmentBox}">
+          <p><strong>Titel:</strong> ${title}</p>
+          <p><strong>Datum:</strong> ${(0, styles_1.formatDate)(date.toDate())}</p>
+          <p><strong>Tijd:</strong> ${(0, styles_1.formatTime)(date.toDate())}</p>
+          <p><strong>Beschrijving:</strong> ${description}</p>
+        </div>
+
+        <p>De afspraak is toegevoegd aan je Google Calendar. Je kunt deze daar accepteren of afwijzen.</p>
+        
+        <a href="https://calendar.google.com" style="${styles_1.emailStyles.button}">
+          Open in Google Calendar
+        </a>
+      </div>
+
+      <div style="${styles_1.emailStyles.footer}">
+        <p>Met vriendelijke groet,<br>Team Growleo</p>
+        <p style="font-size: 12px; margin-top: 10px;">
+          Heb je vragen? Mail ons op <a href="mailto:support@growleo.nl">support@growleo.nl</a>
+        </p>
+      </div>
+    </div>
+  `;
+}
+//# sourceMappingURL=confirmation.js.map

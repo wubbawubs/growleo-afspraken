@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "growleo-afspraken",
+  "private_key_id": "909155e896e5df806b7e4a3b3236b4cfae44b06e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDphou00ScPhxG0\nGYGn/gHQoeg5m/tU5g8XKaip85Ig8CbTgaNARbONAniMCx3kV7TiezRGs93rJwCV\nXCe2agqEWrlQn1LUbHtfcbYFgabqtLmNohGm2DEUvt9xgntD7lK3tH0tlRnoLbhh\nNr69FlYOeAwmn8iSNrxeXdxdQZqTLkAkq0eSaXRPy7eqS+d2HYYSmiebb7255JA1\n4ndyG0hdfwPbSCwJ2DyzyyGjcysSybCQGFjBpF/4cqkTVnAoalQr8j/mvwE0LxRw\nmbiEVCJaBHVLScG8x+9BCj1k59EcWRVHqRl3Nj8RAkAooszM8ae/bEW/hKYNzz7Q\nBGHFUPIzAgMBAAECggEATxISEubwyWasHWW3i5jLp4dy2LLSjoQZXvfplqYU+Bco\nplwSWUxgh+HqzExlUjBKXJdn83qqrRk3LtuVzMOqDPelIMHZq3iR65bWkZW9XWJV\nI7pZLLuuHr6kbMxIDY/QLUitS/Zc38s/T5dYTTEXcW2/e4KFyNBExtUULPVuL+AH\nD7/mxtEjQsHEJoXzPZDNWfjDIfPC6li33OOCrR6NWs5DLZJKPFHgtcN4upEcLFRc\ncjjzzjFDaBzF4qFgqNBQyurLazNfEkPH/NGIVQaBHPP3xzMCbCtaDWeNELBH5VXP\n89cxd96uhqH2WyNQuyLIzCAT3drYdikBy4xzu1hlUQKBgQD7H/ciyG/GItdz2yxj\nxFce+j92QbtR2EqTYc8WT4FMM2DV7s5WwgVcC3t5wgMSRWfX/Ni91KtIxYA9l7LB\nTWGpRKedSQRvlMR6uxIXEHLf6P6dOdIM2xjiwSkA+mxDWTudk+Lfu2HQCyyDFCHB\nsJm1RUdotzgVHTRovPkRowv9gwKBgQDuDx2jfdF8hhuQnw4kqxnFny3+V6KcUlcR\nYpq96PIDq66/s1Gf/4SCjwJ0LfMYsvsJG6+IG6ePrno1utsv+a5HM+AZCzZYowMA\nAfD90xG3hRP6suNo3aAkIoIbTDloj72l69zqCIXEiII1fCywtKu/tMeP88joiURs\nPnP8ZhRJkQKBgQDWbngf2lkfLfcddcRUuH3P9M2l1AD4pSEg8j7bhS4Z/DEu3AiT\nKn9bFm7sDA+FVYCTfNMyXVuY+xRDA7reto2y9O3PL187TCPtzLloumHs8k4fwRSs\nZ5W7Ykb6D9vMMnDmYDY05xNhi3kJwHIGqx7FG5AbSX/4/4QV/28KcVg2swKBgQCu\nqYCBd8q/plWLImfqF29tQ4EnX3z7XJ5tLv+B3uvSLaClHhgBYCQE9pBCVYRK1ubA\npAOBxWiHTuhzi4lOBc8Mhs8hEMzq84877jC2yqnxED68bYvUYOciG/+Br8dfJDdt\nCUSooWAj9lQykczoSWbJ3QWeZKs/kZcWJCxNP0gbQQKBgEArlwAJvuINCVQHfszx\nj13+OWgLdOJJ7lgfEIkAQQc2AQvjujvrXAgOHWv+UClyY8K354MK2h4F+zfIO/ZI\nf35i6UspIaAp6D/kjVTDaSIQculuHcy1YsMR3vJ8HBwaYyWs8X+n7lc6nWOVNzqz\nRq6AIRffFLJGonIDELFN9lMY\n-----END PRIVATE KEY-----\n",
+  "client_email": "growleo-afspraken@appspot.gserviceaccount.com",
+  "client_id": "109307768640301873029",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/growleo-afspraken%40appspot.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -1,0 +1,63 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Clients collection
+    match /clients/{clientId} {
+      allow read: if isAuthenticated();
+      allow create: if isAdmin();
+      allow update: if isAdmin() || isOwner(resource.data.userId);
+      allow delete: if isAdmin();
+      
+      // Validate client data
+      function validateClient() {
+        let client = request.resource.data;
+        return client.name is string && client.name.size() > 0 &&
+               client.email is string && client.email.matches('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$') &&
+               (!('company' in client) || client.company is string) &&
+               (!('phone' in client) || client.phone is string) &&
+               (!('calendarSettings' in client) || validateCalendarSettings(client.calendarSettings));
+      }
+      
+      function validateCalendarSettings(settings) {
+        return settings.workingHours.start.matches('^([0-1][0-9]|2[0-3]):[0-5][0-9]$') &&
+               settings.workingHours.end.matches('^([0-1][0-9]|2[0-3]):[0-5][0-9]$') &&
+               settings.timezone is string &&
+               settings.defaultDuration is number &&
+               settings.defaultDuration > 0;
+      }
+    }
+
+    // Appointments collection
+    match /appointments/{appointmentId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAdmin() || isOwner(resource.data.clientId);
+      allow delete: if isAdmin();
+      
+      // Validate appointment data
+      function validateAppointment() {
+        let appointment = request.resource.data;
+        return appointment.clientId is string &&
+               appointment.prospectEmail is string && 
+               appointment.prospectEmail.matches('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$') &&
+               appointment.date is timestamp &&
+               appointment.status in ['pending', 'confirmed', 'cancelled'];
+      }
+    }
+  }
+} 
